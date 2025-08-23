@@ -1,5 +1,5 @@
 import { MobileSidebar, NavItems } from "Components";
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router";
 import { SidebarComponent } from "@syncfusion/ej2-react-navigations";
 import Dashboard from "./dashboard";
 

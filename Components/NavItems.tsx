@@ -1,5 +1,5 @@
 import { NavLink } from "react-router"
-import { Link } from "react-router-dom"
+import { Link } from "react-router"
 import { sidebarItems } from "~/constants"
 import { cn } from "~/lib/utils"
 

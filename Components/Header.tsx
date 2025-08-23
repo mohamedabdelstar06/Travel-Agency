@@ -9,7 +9,7 @@ const Header = ({title, description} : Props) => {
   return (
     <header className="header">
         <article>
-            <h1 className={cn("text-dark-100",
+            <h1 className={cn("text-dark-200",
             location.pathname === '/' ? 
                 'text-2xl md:text-4xl' :'text-xl md:-2xl')}>
             {title}
