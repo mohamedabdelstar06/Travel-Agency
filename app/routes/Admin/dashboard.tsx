@@ -1,10 +1,14 @@
 import { Header, StatsCard, TripCard } from "Components/"
+import { getUser } from "~/appwrite/auth";
 import { users, allTrips, dashboardStats,user } from "~/constants";
+import type {Route} from './+types/dashboard'
 
 const { totalUsers,usersJoined,totalTrips,TripsCreated,  userRole } = dashboardStats;
 
-const Dashboard = () => {
-  
+export const clientLoader = async () => await getUser();
+
+const Dashboard = ({loaderData}: Route.ComponentProps) => {
+  const user = loaderData as User | null;
     return (
     <div className="dashboard wrapper">
       <Header
