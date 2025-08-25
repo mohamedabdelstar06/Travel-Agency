@@ -102,6 +102,16 @@
       @apply text-sm md:text-lg font-normal truncate text-gray-100;
     }
   }
+/* user-status.css */
+.status-user {
+  background-color: #22c55e; /* أخضر */
+  color: #166534; /* أخضر غامق للـ text */
+}
+
+.status-guest {
+  background-color: #9ca3af; /* رمادي */
+  color: #6b7280; /* رمادي أغمق للـ text */
+}
 
   .trip {
     @apply flex flex-col gap-10 pb-20;
