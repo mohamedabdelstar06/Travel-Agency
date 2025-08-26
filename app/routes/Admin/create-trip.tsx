@@ -43,22 +43,23 @@ const CreateTrip = ({ loaderData }: Route.ComponentProps) => {
         e.preventDefault()
         setLoading(true);
 
-        if (
-            !formData.country ||
-            !formData.travelStyle ||
-            !formData.interest ||
-            !formData.budget ||
-            !formData.groupType
-        ) {
-            setError('Please provide values for all fields');
-            setLoading(false)
-            return;
-        }
-        if (formData.duration < 1 || formData.duration > 10) {
-            setError('Duration must be between 1 and 10 days');
-            setLoading(false)
-            return;
-        }
+       if(
+           !formData.country ||
+           !formData.travelStyle ||
+           !formData.interest ||
+           !formData.budget ||
+           !formData.groupType
+       ) {
+           setError('Please provide values for all fields');
+           setLoading(false)
+           return;
+       }
+
+       if(formData.duration < 1 || formData.duration > 10) {
+           setError('Duration must be between 1 and 10 days');
+           setLoading(false)
+           return;
+       }
         const user = await account.get();
         if (!user.$id) {
             console.error('User not authenticated');
