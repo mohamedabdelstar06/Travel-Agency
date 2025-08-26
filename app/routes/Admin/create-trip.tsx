@@ -8,6 +8,8 @@ import React, { useState } from 'react';
 import { world_map } from '~/constants/world_map';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { account } from '~/appwrite/client';
+import { useNavigate } from 'react-router';
+
 
 export const loader = async () => {
     const response = await fetch(
@@ -26,6 +28,7 @@ export const loader = async () => {
 
 const CreateTrip = ({ loaderData }: Route.ComponentProps) => {
     const countries = loaderData as unknown as Country[];
+    const navigate =useNavigate()
     const [formData, setFormData] = useState<TripFormData>({
         country: countries[0]?.name || '',
         travelStyle: '',
@@ -36,43 +39,59 @@ const CreateTrip = ({ loaderData }: Route.ComponentProps) => {
     });
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
-     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-       e.preventDefault()
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
         setLoading(true);
 
-       if(
-           !formData.country ||
-           !formData.travelStyle ||
-           !formData.interest ||
-           !formData.budget ||
-           !formData.groupType
-       ) {
-           setError('Please provide values for all fields');
-           setLoading(false)
-           return;
-       }
-       if(formData.duration <1 || formData.duration >10){
-        setError('Duration must be between 1 and 10 days');
-           setLoading(false)
-           return;
-       }
-    const user = await account.get();
-    if(!user.$id){
-        console.error('User not authenticated');
-        setLoading(false);
-        return;
-    }
-    try{
-console.log('user' , user);
-console.log('formData ' , formData);
-    }
-    catch(e){
-        console.error('Error generating trip',e)
-    }
-    finally{
-        setLoading(false)
-    }
+        if (
+            !formData.country ||
+            !formData.travelStyle ||
+            !formData.interest ||
+            !formData.budget ||
+            !formData.groupType
+        ) {
+            setError('Please provide values for all fields');
+            setLoading(false)
+            return;
+        }
+        if (formData.duration < 1 || formData.duration > 10) {
+            setError('Duration must be between 1 and 10 days');
+            setLoading(false)
+            return;
+        }
+        const user = await account.get();
+        if (!user.$id) {
+            console.error('User not authenticated');
+            setLoading(false);
+            return;
+        }
+        try {
+            const response = await fetch('/api/create-trip', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    country: formData.country,
+                    numberOfDays: formData.duration,
+                    travelStyle: formData.travelStyle,
+                    interests: formData.interest,
+                    budget: formData.budget,
+                    groupType: formData.groupType,
+                    userId: user.$id
+                })
+            })
+
+        
     
+           const result: CreateTripResponse = await response.json();
+
+         if(result?.id) navigate(`/trips/${result.id}`)
+           else console.error('Failed to generate a trip')
+       } catch (e) {
+           console.error('Error generating trip', e);
+       } finally {
+           setLoading(false)
+       }
+
     }
     const handleChange = (key: keyof TripFormData,
         value: string | number
@@ -195,11 +214,11 @@ console.log('formData ' , formData);
                             <p>{error}</p>
                         </div>
                     )}
-                     <footer className="px-6 w-full">
+                    <footer className="px-6 w-full">
                         <ButtonComponent type="submit"
                             className="button-class !h-12 !w-full" disabled={loading}
                         >
-                            <img src={`/assets/icons/${loading ? 'loader.svg' : 'magic-star.svg'}`} className={cn("size-5", {'animate-spin': loading})} />
+                            <img src={`/assets/icons/${loading ? 'loader.svg' : 'magic-star.svg'}`} className={cn("size-5", { 'animate-spin': loading })} />
                             <span className="p-16-semibold text-white">
                                 {loading ? 'Generating...' : 'Generate Trip'}
                             </span>
