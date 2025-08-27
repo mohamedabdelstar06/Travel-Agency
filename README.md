@@ -110,13 +110,13 @@ graph TB
 
 ```bash
 npm run build
-``` [18](#0-17) 
+``` 
 
 ### Docker Deployment
 ```bash
 docker build -t Travello .
 docker run -p 3000:3000 Travello
-``` [19](#0-18) 
+``` 
 
 ### Supported Platforms
 - AWS ECS
@@ -124,7 +124,7 @@ docker run -p 3000:3000 Travello
 - Azure Container Apps
 - Digital Ocean App Platform
 - Fly.io
-- Railway [20](#0-19) 
+- Railway 
 
 ## 🎯 Key Features Deep Dive
 
@@ -164,7 +164,7 @@ Role-based access control ensures admin-only access: [23](#0-22)
 │   └── lib/                 # Utilities and helpers
 ├── Components/              # Reusable UI components
 └── public/                  # Static assets
-``` [24](#0-23) 
+``` 
 
 ## 🤝 Contributing
 
