@@ -1,6 +1,5 @@
 import { Header, StatsCard, TripCard } from "Components";
 import { getAllUsers, getUser } from "~/appwrite/auth";
-import type { Route } from './+types/dashboard';
 import { getTripsByTravelStyle, getUserGrowthPerDay, getUsersAndTripsStats } from "~/appwrite/dashboard";
 import { getAllTrips } from "~/appwrite/trips";
 import { parseTripData } from "~/lib/utils";
@@ -14,7 +13,7 @@ import {
 } from "@syncfusion/ej2-react-charts";
 import { ColumnDirective, ColumnsDirective, GridComponent, Inject } from "@syncfusion/ej2-react-grids";
 import { tripXAxis, tripyAxis, userXAxis, useryAxis } from "~/constants";
-import { redirect } from "react-router";
+import type { Route } from "./+types/dashboard";
 
 export const clientLoader = async () => {
   const [
@@ -198,7 +197,7 @@ const Dashboard = ({ loaderData }: Route.ComponentProps) => {
                   textAlign="Left"
                   template={(props: UserData) => (
                     <div className="flex items-center gap-1.5 px-4">
-                      <img src={props.imageUrl}
+                      <img src={props.imageUrl || "assets/images/default-image.jpg"}
                         className="rounded-full size-8 aspect-square"
                         onError={(e) => {
                           e.currentTarget.src = "assets/images/default-image.jpg";

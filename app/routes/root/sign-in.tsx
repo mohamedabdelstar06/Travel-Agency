@@ -42,9 +42,11 @@ const signIn = () => {
             src="/assets/icons/google.svg"
             className="size-5"
             alt="google"
-            ></img>
+            ></img> 
             <span className="p-18-semibold text-white">Sign in with Google</span>
            </ButtonComponent>
+           <br/>
+           <p className="p-18-regular text-center text-gray-100 !leading-7">App developed by Mohamed Abdelstar</p>
         </div>
       </section>
     </main>

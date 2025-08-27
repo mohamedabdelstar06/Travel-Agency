@@ -36,7 +36,7 @@ const Trips = ({ loaderData }: Route.ComponentProps) => {
   const [currentPage, setCurrentPage] = useState(initialPage);
   const handlePageChange = (page:number)=>{
     setCurrentPage(page);
-    window.location.search =`?page =${page}`
+    window.location.search = `?page=${page}`;
   }
   return (
     <main className="all-users wrapper">

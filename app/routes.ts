@@ -1,21 +1,22 @@
-import { type RouteConfig, route ,layout } from "@react-router/dev/routes";
+import { type RouteConfig, route ,layout, index } from "@react-router/dev/routes";
 // https://github.com/adrianhajdin/travel-agency-dashboard/tree/main/components
 //https://jsmastery.com/video-kit/3dc764b0-6ee8-458a-a023-c1770039aa46
 
 
 export default [
-  route('sign-in', 'routes/root/sign-in.tsx'),
-  route('api/create-trip','routes/api/create-trip.ts' ),
-  layout( "routes/Admin/admin-layout.tsx",
-    [
-        route( 'dashboard', 'routes/Admin/dashboard.tsx'),
-        route( 'all-users', 'routes/Admin/all-users.tsx'),
-        route( 'trips', 'routes/Admin/trips.tsx'),
-        route( 'trips/create', 'routes/Admin/create-trip.tsx'),
-        route( 'trips/:tripId','routes/Admin/trip-detail.tsx')
-    ] ),  
-  
+    route('sign-in', 'routes/root/sign-in.tsx'),
+    route('api/create-trip', 'routes/api/create-trip.ts'),
+    layout("routes/admin/admin-layout.tsx", [
+        route('dashboard', 'routes/admin/dashboard.tsx'),
+        route('all-users', 'routes/admin/all-users.tsx'),
+        route('trips', 'routes/admin/trips.tsx'),
+        route('trips/create', 'routes/admin/create-trip.tsx'),
+        route('trips/:tripId', 'routes/admin/trip-detail.tsx'),
+    ]),
+    layout('routes/root/page-layout.tsx', [
+        index('routes/root/travel-page.tsx'),
+        route('/travel/:tripId', 'routes/root/travel-detail.tsx'),
+        route('/travel/:tripId/success', 'routes/root/payment-success.tsx'),
+    ])
 ] satisfies RouteConfig;
-
-
  
