@@ -1,38 +1,37 @@
 
 # Travello - AI-Powered Travel Agency Dashboard
 
-A modern, full-stack travel agency application built with React Router that combines AI-powered trip generation with comprehensive administrative capabilities. [1](#0-0) 
-
+A modern, full-stack travel agency application built with React Router that combines AI-powered trip generation with comprehensive administrative capabilities. 
 ## 🚀 Features
 
 ### Admin Dashboard
-- **Real-time Analytics**: User growth metrics, trip statistics, and data visualization [2](#0-1) 
-- **User Management**: Complete admin interface for managing user accounts [3](#0-2) 
-- **Trip Management**: Create, view, and manage AI-generated travel itineraries [4](#0-3) 
-- **Role-based Access Control**: Secure admin-only access with authentication [5](#0-4) 
+- **Real-time Analytics**: User growth metrics, trip statistics, and data visualization 
+- **User Management**: Complete admin interface for managing user accounts 
+- **Trip Management**: Create, view, and manage AI-generated travel itineraries
+- **Role-based Access Control**: Secure admin-only access with authentication 
 
 ### AI-Powered Trip Generation
-- **Google Generative AI Integration**: Intelligent travel itinerary creation [6](#0-5) 
-- **Dynamic Image Integration**: Automatic travel destination images via Unsplash API [7](#0-6) 
-- **Interactive Maps**: Geographic visualization using Syncfusion Maps [8](#0-7) 
+- **Google Generative AI Integration**: Intelligent travel itinerary creation  
+- **Dynamic Image Integration**: Automatic travel destination images via Unsplash API  
+- **Interactive Maps**: Geographic visualization using Syncfusion Maps 
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React Router 7.7.1** - Modern full-stack React framework [9](#0-8) 
-- **React 19.1.0** - Latest React with concurrent features [10](#0-9) 
-- **TypeScript** - Type-safe development [11](#0-10) 
-- **Tailwind CSS 4.1.4** - Utility-first styling [12](#0-11) 
+- **React Router 7.7.1** - Modern full-stack React framework
+- **React 19.1.0** - Latest React with concurrent features 
+- **TypeScript** - Type-safe development 
+- **Tailwind CSS 4.1.4** - Utility-first styling 
 
 ### Backend & Services
-- **Appwrite 18.2.0** - Backend-as-a-Service for auth, database, and storage [13](#0-12) 
-- **Google Generative AI** - AI-powered trip generation [6](#0-5) 
+- **Appwrite 18.2.0** - Backend-as-a-Service for auth, database, and storage
+- **Google Generative AI** - AI-powered trip generation 
 
 ### UI Components
-- **Syncfusion EJ2** - Professional UI components for charts, grids, and navigation [14](#0-13) 
+- **Syncfusion EJ2** - Professional UI components for charts, grids, and navigation 
 
 ### Monitoring
-- **Sentry** - Error tracking and performance monitoring [15](#0-14) 
+- **Sentry** - Error tracking and performance monitoring 
 
 ## 🏗️ Architecture
 
@@ -129,7 +128,7 @@ docker run -p 3000:3000 Travello
 ## 🎯 Key Features Deep Dive
 
 ### Admin Dashboard Analytics
-The dashboard provides comprehensive analytics with real-time data visualization: [21](#0-20) 
+The dashboard provides comprehensive analytics with real-time data visualization: 
 
 - User growth tracking with combined column and spline area charts
 - Trip trends analysis by travel style
@@ -137,7 +136,7 @@ The dashboard provides comprehensive analytics with real-time data visualization
 - Interactive data grids for users and trips
 
 ### AI Trip Generation
-Intelligent trip planning powered by Google's Generative AI: [22](#0-21) 
+Intelligent trip planning powered by Google's Generative AI: 
 
 - Personalized itinerary creation
 - Automatic image sourcing
@@ -145,7 +144,7 @@ Intelligent trip planning powered by Google's Generative AI: [22](#0-21)
 - Budget and group type optimization
 
 ### Security & Authentication
-Role-based access control ensures admin-only access: [23](#0-22) 
+Role-based access control ensures admin-only access: 
 
 - Google OAuth integration
 - Session validation
