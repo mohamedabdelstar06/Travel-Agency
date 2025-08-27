@@ -2,7 +2,7 @@ I'll create a professional GitHub README file for the Travello travel agency pro
 
 <cite/>
 
-# Travell0 - AI-Powered Travel Agency Dashboard
+# Travello - AI-Powered Travel Agency Dashboard
 
 A modern, full-stack travel agency application built with React Router that combines AI-powered trip generation with comprehensive administrative capabilities. [1](#0-0) 
 
