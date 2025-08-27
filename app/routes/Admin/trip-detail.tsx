@@ -2,34 +2,39 @@ import { getAllTrips, getTripById } from "~/appwrite/trips"
 import type { LoaderFunctionArgs } from 'react-router'
 import type { Route } from "./+types/trip-detail";
 import { cn, getFirstWord, parseTripData } from "~/lib/utils";
-import Header from "Components/Header";
+
 import InfoPill from "Components/InfoPill";
 import { ChipDirective, ChipListComponent, ChipsDirective } from "@syncfusion/ej2-react-buttons";
 import { allTrips } from "~/constants";
+import { Header, TripCard } from "Components";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const { tripId } = params;
   if (!tripId) throw new Error('Trip ID is required');
- 
-  const trip = await getTripById(tripId); 
-  const trips = await getAllTrips(4,0)
-  return{trip,
-    allTrips:trips.allTrips.map(({$id, tripDetails, imageUrls})=> ({
+const [trip,trips] = await Promise.all([
+getTripById(tripId),
+getAllTrips(4, 0)
+]);
+
+
+  return {
+    trip,
+    allTrips: trips.allTrips.map(({ $id, tripDetails, imageUrls }) => ({
       id: $id,
-      ... parseTripData(tripDetails),
-      imageUrls: imageUrls ??[]
+      ...parseTripData(tripDetails),
+      imageUrls: imageUrls ?? []
     }))
 
-  } ;
+  };
 }
 const TripDetail = ({ loaderData }: Route.ComponentProps) => {
   const imageUrls = loaderData?.trip?.imageUrls || [];
-  
+
   const tripData = parseTripData(loaderData?.trip?.tripDetails);
   const { name, duration, itinerary, travelStyle,
     groupType, budget, interests, estimatedPrice, description,
     bestTimeToVisit, weatherInfo, country } = tripData || {};
-    const allTrips = loaderData.allTrips as Trip[] | [];
+  const allTrips = loaderData.allTrips as Trip[] | [];
 
   const pillItems = [
     { text: travelStyle, bg: '!bg-pink-50 !text-pink-500' },
@@ -137,25 +142,39 @@ const TripDetail = ({ loaderData }: Route.ComponentProps) => {
           </ul>
 
 
-         {visitTimeAndWeatherInfo.map((section) => (
-                    <section key={section.title} className="visit">
-                        <div>
-                            <h3>{section.title}</h3>
+          {visitTimeAndWeatherInfo.map((section) => (
+            <section key={section.title} className="visit">
+              <div>
+                <h3>{section.title}</h3>
 
-                            <ul>
-                                {section.items?.map((item) => (
-                                    <li key={item}>
-                                        <p className="flex-grow">{item}</p>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                <ul>
+                  {section.items?.map((item) => (
+                    <li key={item}>
+                      <p className="flex-grow">{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </section>
           ))}
-          <section className="flex flex-col gap-6">
-            <h2 className="p-24-semibold text-dark-100 ">Popular Trips</h2>
-          </section>
+      
         </section>
+            <section className="flex flex-col gap-6">
+            <h2 className="p-24-semibold text-dark-100 ">Popular Trips</h2>
+             <div className="trip-grid">
+                    {allTrips.map((trip) => (
+                        <TripCard
+                            key={trip.id}
+                            id={trip.id}
+                            name={trip.name}
+                            imageUrl={trip.imageUrls[0]}
+                            location={trip.itinerary?.[0]?.location ?? ""}
+                            tags={[trip.interests, trip.travelStyle]}
+                            price={trip.estimatedPrice}
+                        />
+                    ))}
+                </div>
+          </section>
       </main>
     </div>
   )
