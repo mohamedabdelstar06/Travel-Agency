@@ -1,7 +1,3 @@
-I'll create a professional GitHub README file for the Travello travel agency project based on the codebase context provided.
-
-<cite/>
-
 # Travello - AI-Powered Travel Agency Dashboard
 
 A modern, full-stack travel agency application built with React Router that combines AI-powered trip generation with comprehensive administrative capabilities. [1](#0-0) 
@@ -112,89 +108,46 @@ graph TB
 ### Production Build
 ```bash
 npm run build
-``` [18](#0-17) 
+``` [1](#1-0) 
+
+### Development Server
+```bash
+npm run dev
+``` [2](#1-1) 
+
+### Production Server
+```bash
+npm start
+``` [3](#1-2) 
 
 ### Docker Deployment
 ```bash
-docker build -t Travello .
-docker run -p 3000:3000 Travello
-``` [19](#0-18) 
+# Build the Docker image
+docker build -t tourvisto .
 
-### Supported Platforms
+# Run the container
+docker run -p 3000:3000 tourvisto
+``` [4](#1-3) 
+
+### Supported Deployment Platforms
+The containerized application can be deployed to any platform that supports Docker, including:
+
 - AWS ECS
 - Google Cloud Run  
 - Azure Container Apps
 - Digital Ocean App Platform
 - Fly.io
-- Railway [20](#0-19) 
+- Railway [5](#1-4) 
 
-## 🎯 Key Features Deep Dive
+### DIY Deployment
+If you're familiar with deploying Node applications, the built-in app server is production-ready.
 
-### Admin Dashboard Analytics
-The dashboard provides comprehensive analytics with real-time data visualization: [21](#0-20) 
-
-- User growth tracking with combined column and spline area charts
-- Trip trends analysis by travel style
-- Monthly statistics comparison
-- Interactive data grids for users and trips
-
-### AI Trip Generation
-Intelligent trip planning powered by Google's Generative AI: [22](#0-21) 
-
-- Personalized itinerary creation
-- Automatic image sourcing
-- Travel style categorization
-- Budget and group type optimization
-
-### Security & Authentication
-Role-based access control ensures admin-only access: [23](#0-22) 
-
-- Google OAuth integration
-- Session validation
-- User role verification
-- Automatic redirects for unauthorized access
-
-## 📁 Project Structure
+Make sure to deploy the output of `npm run build`:
 
 ```
-├── app/
-│   ├── routes/
-│   │   ├── Admin/           # Admin dashboard routes
-│   │   ├── api/             # API endpoints
-│   │   └── root/            # Public routes
-│   ├── appwrite/            # Backend service integration
-│   └── lib/                 # Utilities and helpers
-├── Components/              # Reusable UI components
-└── public/                  # Static assets
-``` [24](#0-23) 
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🔗 Links
-
-- [React Router Documentation](https://reactrouter.com/)
-- [Syncfusion Components](https://ej2.syncfusion.com/react/documentation/)
-- [Appwrite Documentation](https://appwrite.io/docs)
-- [Google AI Documentation](https://ai.google.dev/docs)
-
----
-
-Built with ❤️ using React Router and modern web technologies. [25](#0-24) 
-
-## Notes
-
-This README is based on the Travello travel agency project, which demonstrates a sophisticated admin dashboard system with AI integration. The project uses React Router 7 as its foundation and integrates multiple external services including Appwrite for backend services, Google Generative AI for trip generation, and Syncfusion EJ2 for professional UI components. The admin interface includes comprehensive analytics, user management, and trip management capabilities with role-based access control.
-
-Wiki pages you might want to explore:
-- [Overview (mohamedabdelstar06/Travel-Agency)](/wiki/mohamedabdelstar06/Travel-Agency#1)
-- [Admin Interface (mohamedabdelstar06/Travel-Agency)](/wiki/mohamedabdelstar06/Travel-Agency#3)
+├── package.json
+├── package-lock.json
+├── build/
+│   ├── client/    # Static assets
+│   └── server/    # Server-side code
+``` [6](#1-5) 
